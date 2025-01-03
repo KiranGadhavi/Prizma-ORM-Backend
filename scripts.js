@@ -73,25 +73,109 @@ async function main() {
   // });
 
   // #findMany #
-  const user = await prisma.user.findMany({
+  // const user = await prisma.user.findMany({
+  //   where: {
+  //     // name: "Sam",
+  //     // name: { equals: "Kittu" },
+  //     // name: { not: "Kittu" },
+  //     // name: { notIn: ["Kittu", "Sam"] },
+  //     // age: { lt: 31 },
+  //     // age: { gt: 31 },
+  //     // email: { contains: "@test.com" },
+  //     // email: { startsWith: "Sam" },
+  //     // name: { endsWith: "m" },
+  //     // # OR operator
+  //     // OR: [
+  //     //   {
+  //     //     email: { startsWith: "Sam" },
+  //     //   },
+  //     //   {
+  //     //     age: { lt: 31 },
+  //     //   },
+  //     // ],
+
+  //     // # AND operator
+  //     // AND: [
+  //     //   {
+  //     //     email: { startsWith: "Sam" },
+  //     //   },
+  //     //   {
+  //     //     age: { gt: 31 },
+  //     //   },
+  //     // ],
+  //     // # NOT operator
+  //     // NOT: {
+  //     //   email: { startsWith: "Sam" },
+  //     // },
+  //     // #
+  //     // userPreference: {
+  //     //   emailUpdates: true,
+  //     // },
+  //     // #
+  //     writtenPosts: {
+  //       // every: {
+  //       //   createdAt: new date(),
+  //       // },
+  //       // every: {
+  //       //   title: "Test",
+  //       // },
+  //       none: {
+  //         title: "Test",
+  //       },
+  //       some: {
+  //         title: "Test",
+  //       },
+  //     },
+  //   },
+  //   // distinct: ["name", "age"],
+  //   // take: 1,
+  //   // skip: 1,
+  //   orderBy: {
+  //     age: "desc",
+  //   },
+  // });
+  // console.log(user);
+  // # post
+  // const post = await prisma.post.findMany({
+  //   where: {
+  //     author: {
+  //       // is: {
+  //       //   email: { endsWith: "@test.com" },
+  //       // },
+  //       isNot: { age: 30 },
+  //     },
+  //   },
+  // });
+  // console.log(post);
+
+  // # update
+  const user = await prisma.user.update({
     where: {
-      // name: "Sam",
-      // name: { equals: "Kittu" },
-      // name: { not: "Kittu" },
-      // name: { notIn: ["Kittu", "Sam"] },
-      // age: { lt: 31 },
-      // age: { gt: 31 },
-      // email: { contains: "@test.com" },
-      email: { startsWith: "Sam" },
-      name: { endsWith: "m" },
+      email: "Kittu30@test.com",
     },
-    // distinct: ["name", "age"],
-    // take: 1,
-    // skip: 1,
-    orderBy: {
-      age: "desc",
+    data: {
+      // email: "Kittu30@test.com",
+      // age: { increment: 1 },
+      // age: { decrement: 1 },
+      // age: { multiply: 10 },
+      age: { divide: 10 },
     },
   });
+
+  // #updateMany
+  // const user = await prisma.user.updateMany({
+  //   where: {
+  //     name: "Sam",
+  //   },
+  //   data: {
+  //     name: "Smily Sam",
+  //   },
+  // });
+  // const user = await prisma.user.findMany({
+  //   where: {
+  //     name: "Smily Sam",
+  //   },
+  // });
   console.log(user);
 }
 main()
